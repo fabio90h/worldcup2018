@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
-import { textChange, toggleChange } from '../actions'
+import { textChange, toggleChange, registerButton, loginButton } from '../actions'
 
 
 class LoginForm extends Component {
     // CHANGE STATE TEXT
-    onUsernameChange(text) {
-        this.props.textChange({props: 'username', value: text.target.value});
+    onEmailChange(text) {
+        this.props.textChange({props: 'email', value: text.target.value});
     };
     onPasswordChange(text) {
         this.props.textChange({props: 'password', value: text.target.value});
@@ -21,6 +21,20 @@ class LoginForm extends Component {
         this.props.textChange({props: 'lastName', value: text.target.value});        
     }
 
+    //ON BUTTON PRESS
+    onRegisterButtonPress(event) {
+        //Need email, name, last name, password, confirm password
+        event.preventDefault();
+        const { email, password, firstName, lastName } = this.props;
+        this.props.registerButton({email, password, firstName, lastName});
+    }
+    onLoginButtonPress(event) {
+        //Need email, password
+        event.preventDefault();
+        const { email, password } = this.props;
+        this.props.loginButton({email, password});
+    }
+
     //TOGGLE BETWEEN LOGIN MODER OF CREATE A NEW USER MODE
     onChangeLoginOrCreate() {
         this.props.toggleChange({props: 'loginMode', value: this.props.loginMode})
@@ -28,20 +42,21 @@ class LoginForm extends Component {
     render() {
         return(
             <div style={styles.container}>
-                <h2 style={{textAlign: 'center'}}>Login</h2>
+                <h2 >Login</h2>
                 <form>
                     {
                         this.props.loginMode
                         ?
                             <div style={styles.formStyle}>
-                                <label>Username</label>
+                                {/* EMAIL */}
+                                <label>Email</label>
                                 <input
                                     style={styles.inputStyle} 
-                                    onChange={this.onUsernameChange.bind(this)} 
+                                    onChange={this.onEmailChange.bind(this)} 
                                     type="text" 
-                                    value={this.props.username}
+                                    value={this.props.email}
                                     placeholder="JohnDoe88"/>
-
+                                {/* PASSWORD */}
                                 <label>Password</label>
                                 <input 
                                     style={styles.inputStyle} 
@@ -52,20 +67,23 @@ class LoginForm extends Component {
                             </div>
                         :
                             <div style={styles.formStyle}>
-                                <label>Username</label>
+                                {/* EMAIL */}
+                                <label>Email</label>
                                 <input
                                     style={styles.inputStyle} 
-                                    onChange={this.onUsernameChange.bind(this)} 
+                                    onChange={this.onEmailChange.bind(this)} 
                                     type="text" 
-                                    value={this.props.username}
-                                    placeholder="JohnDoe88"/>
+                                    value={this.props.email}
+                                    placeholder="JohnDoe@gmail.com"/>
+                                {/* FIRST NAME */}
                                 <label>First Name</label>
                                 <input
                                     style={styles.inputStyle} 
                                     onChange={this.onFirstNameChange.bind(this)} 
                                     type="text" 
                                     value={this.props.firstName}
-                                    placeholder="John"/>
+                                    placeholder="John"/> 
+                                {/* LAST NAME */}
                                 <label>Last Name</label>
                                 <input
                                     style={styles.inputStyle} 
@@ -73,7 +91,7 @@ class LoginForm extends Component {
                                     type="text" 
                                     value={this.props.lastName}
                                     placeholder="Doe"/>
-
+                                {/* PASSWORD */}
                                 <label>Password</label>
                                 <input 
                                     style={styles.inputStyle} 
@@ -81,6 +99,7 @@ class LoginForm extends Component {
                                     value={this.props.password}
                                     type="password" 
                                     placeholder="Password"/>
+                                {/* CONFIRM PASSWORD */}
                                 <label>Confirm Password</label>
                                 <input 
                                     style={styles.inputStyle} 
@@ -90,10 +109,16 @@ class LoginForm extends Component {
                                     placeholder="Password"/>
                             </div>
                     }
-                    { this.props.loginMode ? <button>Login</button> : <button>Register</button>}
+                    {this.props.error ? <div style={{textAlign: 'center', color: 'red'}}>{this.props.error}</div> : null }
+                    { this.props.loginMode 
+                        ? 
+                            <button onClick={this.onLoginButtonPress.bind(this)}>Login</button> 
+                        : 
+                            <button onClick={this.onRegisterButtonPress.bind(this)}>Register</button>
+                    }
                 </form>
                 {/* CHANGES FROM LOGIN TO REGISTER DEPENDING ON LOGIN MODE STATE */}
-                <div style={{textAlign: 'center'}}>
+                <div style={{textAlign: 'center', marginTop: '15px', fontSize: '.5em'}}>
                     {this.props.loginMode ? 'Dont have an account?' : 'Already have an account?'}
                     <a 
                         style={{marginLeft: '5px', cursor: 'pointer'}}
@@ -106,16 +131,14 @@ class LoginForm extends Component {
     }
 }
 
+// STYLE
 const styles = {
     container:{
         border: '1px solid black',
-        padding: '5px',
+        padding: '20px',
         width: '35%',
         margin: '50px auto',
     },
-        header: {
-            textAlign: 'center',
-        },
         formStyle: {
             display: 'flex',
             width: '100%',
@@ -123,40 +146,46 @@ const styles = {
             flexDirection: 'column',
         },
             inputStyle: {
-                marginBottom: '10px',
+                margin: '5px 0',
                 height: '20px',
             }
 };
 
 const mapStateToProps = (state) => {
     const {
-        username, 
-        password, 
-        loginMode, 
-        firstName,
-        lastName,
-        confirmPassword,
-    } = state.auth;
-    
-    console.log(
-        password, 
-        username, 
         loginMode,
         firstName,
         lastName,
+        email,
+        password,
         confirmPassword,
+        error,
+        user,
+    } = state.auth;
+    
+    console.log(
+        loginMode,
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        error,
+        user,
     );
 
     return(
         {
-            username,
-            password,
             loginMode,
             firstName,
             lastName,
+            email,
+            password,
             confirmPassword,
+            error,
+            user,
         }
     );
 };
 
-export default connect(mapStateToProps, { textChange, toggleChange })(LoginForm); 
+export default connect(mapStateToProps, { textChange, toggleChange, registerButton, loginButton })(LoginForm); 

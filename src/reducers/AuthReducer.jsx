@@ -2,11 +2,13 @@ import * as actionTypes from '../actions/types';
 
 const INITIAL_STATE = {
     loginMode: true,
+    email: '',
     firstName: '',
     lastName: '',
-    username: '',
     password: '',
     confirmPassword: '',
+    error: '',
+    user: null,
 };
 
 export default (state=INITIAL_STATE, action) => {
@@ -23,6 +25,20 @@ export default (state=INITIAL_STATE, action) => {
                 {
                     ...INITIAL_STATE,
                     [action.payload.props]: !action.payload.value,
+                }
+            );
+        case actionTypes.FIREBASE_SUCCESS:
+            return (
+                {
+                    ...state,
+                    user: action.user
+                }
+            );
+        case actionTypes.FIREBASE_FAILURE:
+            return (
+                {
+                    ...state,
+                    error: action.error,
                 }
             );
         default: return state;
