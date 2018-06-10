@@ -34,8 +34,8 @@ export default (state=INITIAL_STATE, action) => {
                 participant.arrayVal.forEach((round) => {
                    round.forEach((team) => {
                        //console.log('trueOrFalse', correct.filter(correctRound => correctRound.arrayVal.length === round.length))
-                       if (correct.filter(correctRound => correctRound.arrayVal.length === round.length).length != 0) {
-                            if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).includes(team.toString())) {
+                       if (correct.filter(correctRound => correctRound.arrayVal.length === round.length).length !== 0) {
+                            if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).includes(team)) {
                                 switch (round.length) {
                                     case 16:
                                         userPoint += 2
@@ -51,6 +51,9 @@ export default (state=INITIAL_STATE, action) => {
                                         break
                                     case 1:
                                         userPoint += 30
+                                        break
+                                    case 3: 
+                                        userPoint += 5
                                         break
                                     default: break
                                 }

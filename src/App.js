@@ -21,8 +21,8 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          <UserList/>
-          <UserBracket/>
+          <UserList className='userList'/>
+          <UserBracket className='userBracket'/>
         </div>
     );
   }

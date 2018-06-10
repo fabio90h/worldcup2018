@@ -25,12 +25,3 @@ export const userListFetch = () => {
         })
     });
 };
-
-// export const calculatePointsFetch = () => {
-//     return(
-//         {
-//             type: actionTypes.CALCULATE_POINTS,
-//             payload: 
-//         }
-//     )
-// };
