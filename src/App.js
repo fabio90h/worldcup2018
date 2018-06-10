@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import LoginForm from './components/LoginForm';
 import firebase from 'firebase';
 import './App.css';
+import UserBracket from './components/UserBracket';
+import UserList from './components/UserList';
 
 class App extends Component {
   componentWillMount() {
@@ -20,7 +21,8 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          <LoginForm/>
+          <UserList/>
+          <UserBracket/>
         </div>
     );
   }
