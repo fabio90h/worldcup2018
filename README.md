@@ -1,5 +1,5 @@
 #Demo
-https://fabio90h.github.io/worldcup2018
+https://fabio90h.github.io/worldcup2018/
 
 # Summary
 This website will keep track of all the world cup 2018 brackets you and your friends put in to the firebase database. Since this application is only for my friends, I did not include a login section since most of them are not willing to give out their emails. 
