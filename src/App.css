@@ -18,20 +18,33 @@ html{
         font-family: 'Dancing Script', cursive;
         border-bottom: 3px solid black;
     }
-        #header > span{
+        #header span{
             padding: 10px;
             margin: 10px;
             /* border: 1px solid white; */
         }
+        #header:hover #messicrying > div{
+            visibility: visible;
+            top: 25px; 
+            left: 200px; 
+	        z-index: 1;
+        }
     #messicrying{
-        background-image: url('http://digitalspyuk.cdnds.net/16/26/480x240/landscape-1467020318-crying-messi.gif');
-        width: 900px;
-        height: 500px;
         border: 1px solid black;
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
+        width: 100%;
+        position: relative;
     }
+        #messicrying > div{
+            position: absolute;
+            visibility: hidden;
+            background-image: url('http://digitalspyuk.cdnds.net/16/26/480x240/landscape-1467020318-crying-messi.gif');
+            width: 400px;
+            height: 200px;
+            /* border: 1px solid black; */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     .userDiv{
         /* border: 2px solid blue; */
         display: flex;

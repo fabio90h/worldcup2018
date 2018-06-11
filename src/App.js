@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          <div id='header'><span>World Cup 2018</span></div>
+          <div id='header'><div id='messicrying'><div></div></div><span>World Cup 2018</span></div>
           <div className='userDiv'>
             <div id='userList'>
               <UserList/>
@@ -31,7 +31,6 @@ class App extends Component {
               <UserBracket/>
             </div>
           </div>
-          {/* <div id='messicrying'></div> */}
           <Comment/>
         </div>
     );
