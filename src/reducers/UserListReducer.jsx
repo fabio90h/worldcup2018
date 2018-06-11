@@ -7,7 +7,8 @@ const INITIAL_STATE = {
     points: [],
     picks: [],
     sortedName: [],
-    activeBracket: null,
+    activeUser: null,
+    commentsArray: [],
 };
 
 export default (state=INITIAL_STATE, action) => {
@@ -17,11 +18,14 @@ export default (state=INITIAL_STATE, action) => {
             const category = _.map(action.payload, (val) => {
                 return { ...val}
             });
-            const correct = _.map(category[0], (val) => {
+            const commentsArray = _.map(category[0], (val) => {
+                return {...val}
+            })
+            const correct = _.map(category[1], (val) => {
                 let arrayVal = val.split(',');
                 return {arrayVal}
             });
-            const participants = _.map(category[1], (val, uid) => {
+            const participants = _.map(category[2], (val, uid) => {
                 let arrayVal = _.map(val)
                 arrayVal = arrayVal.map(current => current.split(','))
                 return {arrayVal, uid}
@@ -68,23 +72,24 @@ export default (state=INITIAL_STATE, action) => {
             })
             keys = Object.keys(sortable);
             keys.sort(function(a, b) { return sortable[b] - sortable[a]});
-            console.log('category', category, 'participants', participants, 'correct', correct, 'uidPoints', uidPoints );
+            console.log('category', category, 'participants', participants, 'correct', correct, 'uidPoints', uidPoints, 'commentsArray', commentsArray );
             return (
                 {
                     ...state,
                     participants: [...participants],
                     correct: [...correct],
                     points: uidPoints,
-                    sortedName: keys
+                    sortedName: keys,
+                    commentsArray,
                 }
             );
         case actionTypes.USER_CLICK_BRACKET:
-            console.log('picks: ', action.payload.uid)
+            console.log('activeUser: ', action.payload.uid)
             return (
                 {
                     ...state,
-                    picks: action.payload,
-                    activeBracket: action.payload.uid,
+                    picks: action.payload.bracket,
+                    activeUser: action.payload.uid
                 }
             );
         default: return state;

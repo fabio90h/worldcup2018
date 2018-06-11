@@ -3,6 +3,7 @@ import firebase from 'firebase';
 import './App.css';
 import UserBracket from './components/UserBracket';
 import UserList from './components/UserList';
+import Comment from './components/Comments';
 
 class App extends Component {
   componentWillMount() {
@@ -25,6 +26,7 @@ class App extends Component {
             <div id='userList'><UserList/></div>
             <div id='userBracket'><UserBracket/></div>
           </div>
+          <Comment/>
         </div>
     );
   }

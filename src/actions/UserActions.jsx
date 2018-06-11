@@ -1,12 +1,12 @@
 import * as actionTypes from './types';
 import firebase from 'firebase';
 
-export const userClickBracket = (participant) => {
-    console.log('userClickBracket', participant)
+export const userClickBracket = (bracket, uid) => {
+    console.log('userClickBracket', bracket, 'uid', uid)
     return (
         {
             type: actionTypes.USER_CLICK_BRACKET,
-            payload: participant,
+            payload: {bracket, uid}
         }
     );
 }
