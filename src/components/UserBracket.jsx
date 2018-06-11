@@ -10,6 +10,12 @@ class UserBracket extends Component {
         }
         return "pick"
     };
+    markAsResultsOut = (team) => {
+        if (team.length > 2) {
+            return "correctPick" 
+        }
+        return "pick"
+    }
 
     goThruArray = () => {
         return(
@@ -93,6 +99,90 @@ class UserBracket extends Component {
         );
     }
 
+    goThruCorrectArray = () => {
+        return(
+            this.props.correct.map((round) => {
+                let currentRound = round.arrayVal;
+                console.log('round', currentRound)
+                    switch (currentRound.length) {
+                        case 16:
+                            return (
+                                [
+                                    <div id='roundA'>
+                                        <div className='team'>{currentRound.slice(0,2).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                        <div className='team'>{currentRound.slice(2,4).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                        <div className='team'>{currentRound.slice(4,6).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                        <div className='team'>{currentRound.slice(6,8).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                    </div>,
+                                    <div id='roundB'>
+                                        <div className='team'>{currentRound.slice(8,10).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                        <div className='team'>{currentRound.slice(10,12).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                        <div className='team'>{currentRound.slice(12,14).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                        <div className='team'>{currentRound.slice(14).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                    </div>
+                                ]
+                            );
+                        case 8:
+                            return (
+                                [
+                                    <div id='quarterA'>
+                                        <div>
+                                            <div className='team'>{currentRound.slice(0,2).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                            <div className='team'>{currentRound.slice(2,4).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                        </div>
+                                    </div>,
+                                    <div id='quarterB'>
+                                        <div>
+                                            <div className='team'>{currentRound.slice(4,6).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                            <div className='team'>{currentRound.slice(6).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                        </div>
+                                    </div>
+                                ]
+                            );
+                        case 4:
+                            return (
+                                [
+                                    <div id='semiA'>
+                                        <div className='team'>{currentRound.slice(0,2).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                    </div>,
+                                    <div id='semiB'>
+                                        <div className='team'>{currentRound.slice(2).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                    </div>
+                                ]
+                            );
+                        case 2:
+                            return (
+                                [
+                                    <div id='finalA'>
+                                        <div className='team'>{currentRound.slice(0,1).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                    </div>,
+                                    <div id='finalB'>
+                                        <div className='team'>{currentRound.slice(1).map(team => <div className={this.markAsResultsOut(team)}>{team}</div>)}</div>
+                                    </div>
+                                ]
+                            );
+                        case 1:
+                            console.log('champion', currentRound[0])
+                            return (
+                                <div id='champion'>
+                                    <div className='team'><div className={this.markAsResultsOut(currentRound)}>{currentRound[0]}</div></div>
+                                </div>
+                            );
+                        case 3:
+                            return (
+                                <div id='third'>
+                                    <div>
+                                        <div>3rd Place:</div>
+                                        <div className={this.markAsResultsOut(currentRound)}>{currentRound[0]}</div>
+                                    </div>
+                                </div>
+                            );
+                        default: return null
+                    }
+                })
+        );
+    };
+
     render() {
         if (this.props.picks.length !== 0) {
             console.log('renderPick', this.props.picks)
@@ -101,7 +191,7 @@ class UserBracket extends Component {
               );
         }
         return (
-            <div>Please select a bracket</div>
+            this.goThruCorrectArray()
           );
     }
 }

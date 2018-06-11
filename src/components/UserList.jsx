@@ -20,12 +20,12 @@ class UserList extends Component {
             return participants.map((participant) => {
                 if (name === participant.uid) {
                     if (activeUser && activeUser === participant.uid) {
-                        return <div style={{backgroundColor:'green'}} className='user' key={participant.uid} onClick={() => this.onListClick(participant)}>
-                        <span style={{color: 'green'}}>{index+1}.  </span><span style={{color: 'red'}}>{participant.uid}</span> <span style={{color: 'blue'}}>{`pts: ${(points.filter(userPoint => userPoint.uid === participant.uid))[0].points}`}</span>
+                        return <div style={{backgroundColor:'lightblue'}} className='user' key={participant.uid} onClick={() => this.onListClick(participant)}>
+                        <span style={{color: 'black'}}><strong>{index+1}. </strong></span><span style={{color: 'black'}}>{participant.uid}</span> <span style={{color: 'blue'}}>{`pts: ${(points.filter(userPoint => userPoint.uid === participant.uid))[0].points}`}</span>
                         </div>
                     }
                     return <div className='user' key={participant.uid} onClick={() => this.onListClick(participant)}>
-                    <span style={{color: 'green'}}>{index+1}.  </span><span style={{color: 'red'}}>{participant.uid}</span> <span style={{color: 'blue'}}>{`pts: ${(points.filter(userPoint => userPoint.uid === participant.uid))[0].points}`}</span>
+                    <span style={{color: 'black'}}><strong>{index+1}.</strong> </span><span style={{color: 'black'}}>{participant.uid}</span> <span style={{color: 'blue'}}>{`pts: ${(points.filter(userPoint => userPoint.uid === participant.uid))[0].points}`}</span>
                     </div>
                 }
                 return null;

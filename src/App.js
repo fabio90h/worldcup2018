@@ -23,8 +23,13 @@ class App extends Component {
     return (
         <div className="App">
           <div className='userDiv'>
-            <div id='userList'><UserList/></div>
-            <div id='userBracket'><UserBracket/></div>
+            <div id='userList'>
+              <UserList/>
+            </div>
+            <div id='userBracket'>
+              <div id='worldcupLogo'/>
+              <UserBracket/>
+            </div>
           </div>
           <Comment/>
         </div>

@@ -9,7 +9,8 @@ class Comments extends Component {
     typingName = (text) => {
         this.props.textInput({props: 'name', value: text.target.value})
     };
-    postComment = () => {
+    postComment = (e) => {
+        e.preventDefault();
         const { name, comment } = this.props
         console.log({name, comment})
         this.props.postComment({name, comment})
@@ -21,7 +22,7 @@ class Comments extends Component {
             console.log('displayComments', comment)
             return <div className='comment'>
                         <div id='commentText'>{comment.comment}</div>
-                        <span style={{fontSize: '.8em'}}> <strong>Author:</strong>  {comment.name}</span>
+                        <span style={{fontSize: '.8em', marginTop: '5px'}}> <strong>Author:</strong>  {comment.name}</span>
                         <span style={{fontSize: '.8em'}}>{comment.date}</span>
                     </div>
         })
