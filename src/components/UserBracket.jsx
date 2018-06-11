@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
+import { resetPicks } from '../actions';
 
 class UserBracket extends Component {
 
@@ -16,7 +17,11 @@ class UserBracket extends Component {
         }
         return "pick"
     }
-
+    // Will reset the picks and show default bracket
+    resetPicks = () => {
+        this.props.resetPicks();
+    }
+    // Will go through the user's pick
     goThruArray = () => {
         return(
             this.props.picks.map((round) => {
@@ -81,7 +86,10 @@ class UserBracket extends Component {
                             console.log('champion', round[0])
                             return (
                                 <div id='champion'>
-                                    <div className='team'><div className={this.markAsCorrectTeam(round, round[0])}>{round[0]}</div></div>
+                                    <div>
+                                        <div id='worldcupLogo' onClick={this.resetPicks}/>
+                                        <div className='team'><div className={this.markAsCorrectTeam(round, round[0])}>{round[0]}</div></div>                                    
+                                    </div>
                                 </div>
                             );
                         case 3:
@@ -98,7 +106,7 @@ class UserBracket extends Component {
                 })
         );
     }
-
+    // Will go through the default pick
     goThruCorrectArray = () => {
         return(
             this.props.correct.map((round) => {
@@ -165,7 +173,10 @@ class UserBracket extends Component {
                             console.log('champion', currentRound[0])
                             return (
                                 <div id='champion'>
-                                    <div className='team'><div className={this.markAsResultsOut(currentRound)}>{currentRound[0]}</div></div>
+                                    <div>
+                                        <div id='worldcupLogo'/>
+                                        <div className='team'><div className={this.markAsResultsOut(currentRound)}>{currentRound[0]}</div></div>
+                                    </div>
                                 </div>
                             );
                         case 3:
@@ -206,4 +217,4 @@ const mapStateToProps = (state) => {
     );
 };
 
-export default connect(mapStateToProps, {  })(UserBracket);
+export default connect(mapStateToProps, { resetPicks })(UserBracket);

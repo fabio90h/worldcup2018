@@ -13,3 +13,5 @@ export const USER_CLICK_BRACKET = 'user_click_bracket';
 
 export const TEXT_INPUT = 'text_input';
 export const POST_COMMENT = 'post_comment';
+
+export const RESET_PICKS = 'reset_picks';

@@ -92,6 +92,13 @@ export default (state=INITIAL_STATE, action) => {
                     activeUser: action.payload.uid
                 }
             );
+        case actionTypes.RESET_PICKS:
+            return (
+                {
+                    ...state,
+                    picks: [],
+                }
+            );
         default: return state;
     }
 }

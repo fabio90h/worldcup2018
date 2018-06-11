@@ -25,3 +25,11 @@ export const userListFetch = () => {
         })
     });
 };
+
+export const resetPicks = () => {
+    return (
+        {
+            type: actionTypes.RESET_PICKS,
+        }
+    );
+}

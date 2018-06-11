@@ -27,7 +27,6 @@ class App extends Component {
               <UserList/>
             </div>
             <div id='userBracket'>
-              <div id='worldcupLogo'/>
               <UserBracket/>
             </div>
           </div>
