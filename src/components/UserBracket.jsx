@@ -5,8 +5,8 @@ import { resetPicks } from '../actions';
 class UserBracket extends Component {
 
     markAsCorrectTeam = (round, team) => {
-        const { correct } = this.props      
-        if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).indexOf(team)) {
+        const { correct } = this.props 
+        if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).indexOf(team) !== -1) {
             return "correctPick"
         }
         return "pick"

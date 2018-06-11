@@ -37,7 +37,7 @@ export default (state=INITIAL_STATE, action) => {
                 participant.arrayVal.forEach((round) => {
                    round.forEach((team) => {
                        if (correct.filter(correctRound => correctRound.arrayVal.length === round.length).length !== 0) {
-                            if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).indexOf(team)) {
+                            if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).indexOf(team) !== -1) {
                                 switch (round.length) {
                                     case 16:
                                         userPoint += 2
