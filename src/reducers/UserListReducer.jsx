@@ -7,11 +7,11 @@ const INITIAL_STATE = {
     points: [],
     picks: [],
     sortedName: [],
+    activeBracket: null,
 };
 
 export default (state=INITIAL_STATE, action) => {
-    switch (action.type) {
-        
+    switch (action.type) {    
         case actionTypes.USER_FETCH_SUCCESS:
             // REORGANIZING THE DATA TO ARRAY
             const category = _.map(action.payload, (val) => {
@@ -27,14 +27,11 @@ export default (state=INITIAL_STATE, action) => {
                 return {arrayVal, uid}
             })
             // POINT SYSTEM
-            //console.log(correct.filter(correctRound => correctRound.arrayVal.length === participants[0].arrayVal[0].length)[0].arrayVal);
-            //console.log(((correct.filter(correctRound => correctRound.arrayVal.length === participants[0].arrayVal[3].length))[0].arrayVal).includes('Brazil'))
             let uidPoints = [];
             participants.forEach((participant) => {
                 let userPoint = 0;
                 participant.arrayVal.forEach((round) => {
                    round.forEach((team) => {
-                       //console.log('trueOrFalse', correct.filter(correctRound => correctRound.arrayVal.length === round.length))
                        if (correct.filter(correctRound => correctRound.arrayVal.length === round.length).length !== 0) {
                             if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).includes(team)) {
                                 switch (round.length) {
@@ -82,12 +79,12 @@ export default (state=INITIAL_STATE, action) => {
                 }
             );
         case actionTypes.USER_CLICK_BRACKET:
-            console.log('picks: ', action.payload)
+            console.log('picks: ', action.payload.uid)
             return (
                 {
                     ...state,
-                    picks: action.payload
- 
+                    picks: action.payload,
+                    activeBracket: action.payload.uid,
                 }
             );
         default: return state;

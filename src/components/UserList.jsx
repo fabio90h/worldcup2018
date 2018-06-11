@@ -13,27 +13,14 @@ class UserList extends Component {
     onListClick = (participant) => {
         this.props.userClickBracket(participant.arrayVal);
     }
-    objectSort = () => {
-        const { points } = this.props;
-        let keys;
-        let sortable = {};
-        points.forEach((point) => {
-            sortable[point.uid] = point.points;
-        })
-        keys = Object.keys(sortable);
-        keys.sort(function(a, b) { return sortable[b] - sortable[a] });
-        console.log('key', keys)
-        
-    }
 
     participantList = () => {
         const { participants, points, sortedName } = this.props 
-        console.log('sortedName', sortedName);
         return sortedName.map((name, index) => {
             return participants.map((participant) => {
                 if (name === participant.uid) {
                     return <div className='user' key={participant.uid} onClick={() => this.onListClick(participant)}>
-                    <span style={{color: 'green'}}>{index+1}.  </span><span style={{color: 'red'}}>{participant.uid}</span> <span style={{color: 'blue'}}>{`points: ${(points.filter(userPoint => userPoint.uid === participant.uid))[0].points}`}</span>
+                    <span style={{color: 'green'}}>{index+1}.  </span><span style={{color: 'red'}}>{participant.uid}</span> <span style={{color: 'blue'}}>{`pts: ${(points.filter(userPoint => userPoint.uid === participant.uid))[0].points}`}</span>
                     </div>
                 }
                 return null;

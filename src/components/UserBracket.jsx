@@ -23,14 +23,12 @@ class UserBracket extends Component {
                                         <div className='team'>{round.slice(2,4).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
                                         <div className='team'>{round.slice(4,6).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
                                         <div className='team'>{round.slice(6,8).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
-                                        {/* {round.slice(8).map(team => <li className={this.markAsCorrectTeam(round, team)}>16a{team}</li>)} */}
                                     </div>,
                                     <div id='roundB'>
                                         <div className='team'>{round.slice(8,10).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
                                         <div className='team'>{round.slice(10,12).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
                                         <div className='team'>{round.slice(12,14).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
                                         <div className='team'>{round.slice(14).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
-                                        {/* {round.slice(0,8).map(team => <li className={this.markAsCorrectTeam(round, team)}>16b{team}</li>)} */}
                                     </div>
                                 ]
                             );
@@ -42,14 +40,12 @@ class UserBracket extends Component {
                                             <div className='team'>{round.slice(0,2).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
                                             <div className='team'>{round.slice(2,4).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
                                         </div>
-                                        {/* {round.slice(4).map(team => <div className={this.markAsCorrectTeam(round, team)}>8a{team}</div>)} */}
                                     </div>,
                                     <div id='quarterB'>
                                         <div>
                                             <div className='team'>{round.slice(4,6).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
                                             <div className='team'>{round.slice(6).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
                                         </div>
-                                        {/* {round.slice(0,4).map(team => <div className={this.markAsCorrectTeam(round, team)}>8b{team}</div>)} */}
                                     </div>
                                 ]
                             );
@@ -58,11 +54,9 @@ class UserBracket extends Component {
                                 [
                                     <div id='semiA'>
                                         <div className='team'>{round.slice(0,2).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
-                                        {/* {round.slice(2).map(team => <div className={this.markAsCorrectTeam(round, team)}>4a{team}</div>)} */}
                                     </div>,
                                     <div id='semiB'>
                                         <div className='team'>{round.slice(2).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
-                                        {/* {round.slice(0,2).map(team => <div className={this.markAsCorrectTeam(round, team)}>4b{team}</div>)} */}
                                     </div>
                                 ]
                             );
@@ -96,14 +90,19 @@ class UserBracket extends Component {
                         default: return null
                     }
                 })
-            //})
         );
     }
 
     render() {
+        if (this.props.picks.length !== 0) {
+            console.log('renderPick', this.props.picks)
+            return (
+                this.goThruArray() 
+              );
+        }
         return (
-          this.goThruArray()
-        );
+            <div>Please select a bracket</div>
+          );
     }
 }
 
