@@ -97,6 +97,7 @@ export default (state=INITIAL_STATE, action) => {
                 {
                     ...state,
                     picks: [],
+                    activeUser: null,
                 }
             );
         default: return state;
