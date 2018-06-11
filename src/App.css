@@ -29,21 +29,38 @@ html{
             left: 200px; 
 	        z-index: 1;
         }
-    #messicrying{
-        border: 1px solid black;
-        width: 100%;
-        position: relative;
+        #messicrying{
+            border: 1px solid black;
+            width: 100%;
+            position: relative;
+        }
+            #messicrying > div{
+                position: absolute;
+                visibility: hidden;
+                background-image: url('http://digitalspyuk.cdnds.net/16/26/480x240/landscape-1467020318-crying-messi.gif');
+                width: 400px;
+                height: 200px;
+                /* border: 1px solid black; */
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+    #pointSystem{
+        /* background-color: white; */
+        list-style-type: none;
+        /* border: 1px solid black; */
+        width: 20%;
+        margin-left: 10px;
+        padding: 10px;
+        /* box-shadow: 0 50px 100px rgba(50,50,93,.05), 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.1); */
+        
     }
-        #messicrying > div{
-            position: absolute;
-            visibility: hidden;
-            background-image: url('http://digitalspyuk.cdnds.net/16/26/480x240/landscape-1467020318-crying-messi.gif');
-            width: 400px;
-            height: 200px;
-            /* border: 1px solid black; */
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+        #pointSystem > li{
+            margin-bottom: 5px;
+        }
+        #pointSystem > li > strong{
+            text-decoration: underline;
+            color:  rgb(175, 41, 41);
         }
     .userDiv{
         /* border: 2px solid blue; */

@@ -23,6 +23,17 @@ class App extends Component {
     return (
         <div className="App">
           <div id='header'><div id='messicrying'><div></div></div><span>World Cup 2018</span></div>
+          <div>
+            <ul id='pointSystem'>
+              <h3>Points System</h3>
+                <li><strong>Round of 16:</strong> +2 (32 possible points)</li>
+                <li><strong>Quarterfinal:</strong> +3 (24 possible points)</li>
+                <li><strong>Semifinal:</strong> +8 (32 possible points)</li>
+                <li><strong>Final:</strong> +15 (30 possible points)</li>
+                <li><strong>Champion:</strong> +30 (30 possible points)</li>
+                <li><strong>3rd Place:</strong> +5 (5 possible points)</li>
+            </ul>
+          </div>
           <div className='userDiv'>
             <div id='userList'>
               <UserList/>
