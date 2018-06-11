@@ -5,7 +5,8 @@ const INITIAL_STATE = {
     participants: [],
     correct: [],
     points: [],
-    picks: []
+    picks: [],
+    sortedName: [],
 };
 
 export default (state=INITIAL_STATE, action) => {
@@ -63,6 +64,13 @@ export default (state=INITIAL_STATE, action) => {
                 })
                 uidPoints.push({points: userPoint, uid: participant.uid})
             })
+            let keys;
+            let sortable = {};
+            uidPoints.forEach((point) => {
+                sortable[point.uid] = point.points;
+            })
+            keys = Object.keys(sortable);
+            keys.sort(function(a, b) { return sortable[b] - sortable[a]});
             console.log('category', category, 'participants', participants, 'correct', correct, 'uidPoints', uidPoints );
             return (
                 {
@@ -70,6 +78,7 @@ export default (state=INITIAL_STATE, action) => {
                     participants: [...participants],
                     correct: [...correct],
                     points: uidPoints,
+                    sortedName: keys
                 }
             );
         case actionTypes.USER_CLICK_BRACKET:
@@ -79,62 +88,6 @@ export default (state=INITIAL_STATE, action) => {
                     ...state,
                     picks: action.payload
  
-                }
-            );
-        case actionTypes.CALCULATE_POINTS:
-            console.log('cal_points',action.payload);
-            let pointsArray = [];
-            console.log('participats', action.payload.participants)
-            action.payload.participants.forEach((participant) => {
-
-                let roundPoints = 0;
-                let arrayRound = participant.round.split(',')
-                arrayRound.forEach((guessteam) => {
-                    if (action.payload.correctround.includes(guessteam)) {
-                        roundPoints += 2;
-                    }
-                })
-
-                let quarterFinalPoints = 0;
-                let arrayQuarterFinal = participant.quarterfinal.split(',')
-                arrayQuarterFinal.forEach((guessteam) => {
-                    if (action.payload.correctquarterfinal.includes(guessteam)) {
-                        quarterFinalPoints += 3;
-                    }
-                })
-
-                let semiFinalPoints = 0;
-                let arraySemiFinal = participant.semifinal.split(',')
-                arraySemiFinal.forEach((guessteam) => {
-                    if (action.payload.correctsemifinal.includes(guessteam)) {
-                        semiFinalPoints += 8;
-                    }
-                })
-
-                let finalPoints = 0;
-                let arrayfinal = participant.final.split(',')
-                arrayfinal.forEach((guessteam) => {
-                    if (action.payload.correctfinal.includes(guessteam)) {
-                        finalPoints += 15;
-                    }
-                })
-
-                let championPoints = 0;
-                if (action.payload.correctchampion === participant.final) {
-                    championPoints += 30;
-                }
-                pointsArray.push(
-                    { 
-                        points: [roundPoints, quarterFinalPoints, semiFinalPoints, finalPoints, championPoints].reduce((total, single) => total + single), 
-                        uid: participant.uid,
-                    }
-                )    
-            });
-            console.log('pointsArray',pointsArray)
-            return (
-                {
-                    ...state,
-                    points: pointsArray,
                 }
             );
         default: return state;

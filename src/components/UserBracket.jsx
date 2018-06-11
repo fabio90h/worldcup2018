@@ -8,6 +8,7 @@ class UserBracket extends Component {
         if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).includes(team)) {
             return "correctPick"
         }
+        return "pick"
     };
 
     goThruArray = () => {
@@ -17,59 +18,80 @@ class UserBracket extends Component {
                         case 16:
                             return (
                                 [
-                                    <ul className='16a'>
-                                        {round.slice(8).map(team => <li className={this.markAsCorrectTeam(round, team)}>16a{team}</li>)}
-                                    </ul>,
-                                    <ul className='16b'>
-                                        {round.slice(0,8).map(team => <li className={this.markAsCorrectTeam(round, team)}>16b{team}</li>)}
-                                    </ul>
+                                    <div id='roundA'>
+                                        <div className='team'>{round.slice(0,2).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        <div className='team'>{round.slice(2,4).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        <div className='team'>{round.slice(4,6).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        <div className='team'>{round.slice(6,8).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        {/* {round.slice(8).map(team => <li className={this.markAsCorrectTeam(round, team)}>16a{team}</li>)} */}
+                                    </div>,
+                                    <div id='roundB'>
+                                        <div className='team'>{round.slice(8,10).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        <div className='team'>{round.slice(10,12).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        <div className='team'>{round.slice(12,14).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        <div className='team'>{round.slice(14).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        {/* {round.slice(0,8).map(team => <li className={this.markAsCorrectTeam(round, team)}>16b{team}</li>)} */}
+                                    </div>
                                 ]
                             );
                         case 8:
                             return (
                                 [
-                                    <ul className='8a'>
-                                        {round.slice(4).map(team => <li className={this.markAsCorrectTeam(round, team)}>8a{team}</li>)}
-                                    </ul>,
-                                    <ul className='8b'>
-                                        {round.slice(0,4).map(team => <li className={this.markAsCorrectTeam(round, team)}>8b{team}</li>)}
-                                    </ul>
+                                    <div id='quarterA'>
+                                        <div>
+                                            <div className='team'>{round.slice(0,2).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                            <div className='team'>{round.slice(2,4).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        </div>
+                                        {/* {round.slice(4).map(team => <div className={this.markAsCorrectTeam(round, team)}>8a{team}</div>)} */}
+                                    </div>,
+                                    <div id='quarterB'>
+                                        <div>
+                                            <div className='team'>{round.slice(4,6).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                            <div className='team'>{round.slice(6).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        </div>
+                                        {/* {round.slice(0,4).map(team => <div className={this.markAsCorrectTeam(round, team)}>8b{team}</div>)} */}
+                                    </div>
                                 ]
                             );
                         case 4:
                             return (
                                 [
-                                    <ul className='4a'>
-                                        {round.slice(2).map(team => <li className={this.markAsCorrectTeam(round, team)}>4a{team}</li>)}
-                                    </ul>,
-                                    <ul className='4b'>
-                                        {round.slice(0,2).map(team => <li className={this.markAsCorrectTeam(round, team)}>4b{team}</li>)}
-                                    </ul>
+                                    <div id='semiA'>
+                                        <div className='team'>{round.slice(0,2).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        {/* {round.slice(2).map(team => <div className={this.markAsCorrectTeam(round, team)}>4a{team}</div>)} */}
+                                    </div>,
+                                    <div id='semiB'>
+                                        <div className='team'>{round.slice(2).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                        {/* {round.slice(0,2).map(team => <div className={this.markAsCorrectTeam(round, team)}>4b{team}</div>)} */}
+                                    </div>
                                 ]
                             );
                         case 2:
                             return (
                                 [
-                                    <ul className='2a'>
-                                        {round.slice(2).map(team => <li className={this.markAsCorrectTeam(round, team)}>2a{team}</li>)}
-                                    </ul>,
-                                    <ul className='2b'>
-                                        {round.slice(0,2).map(team => <li className={this.markAsCorrectTeam(round, team)}>2b{team}</li>)}
-                                    </ul>
+                                    <div id='finalA'>
+                                        <div className='team'>{round.slice(0,1).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                    </div>,
+                                    <div id='finalB'>
+                                        <div className='team'>{round.slice(1).map(team => <div className={this.markAsCorrectTeam(round, team)}>{team}</div>)}</div>
+                                    </div>
                                 ]
                             );
                         case 1:
                             console.log('champion', round[0])
                             return (
-                                <ul className='1a'>
-                                    <li className={this.markAsCorrectTeam(round, round[0])}>1a{round[0]}</li>
-                                </ul>
+                                <div id='champion'>
+                                    <div className='team'><div className={this.markAsCorrectTeam(round, round[0])}>{round[0]}</div></div>
+                                </div>
                             );
                         case 3:
                             return (
-                                <ul className='3a'>
-                                    <li className={this.markAsCorrectTeam(round, round[0])}>3a{round[0]}</li>
-                                </ul>
+                                <div id='third'>
+                                    <div>
+                                        <div>3rd Place:</div>
+                                        <div className={this.markAsCorrectTeam(round, round[0])}>{round[0]}</div>
+                                    </div>
+                                </div>
                             );
                         default: return null
                     }
@@ -80,7 +102,7 @@ class UserBracket extends Component {
 
     render() {
         return (
-            this.goThruArray()
+          this.goThruArray()
         );
     }
 }

@@ -1,9 +1,176 @@
-.App{
-    width: 100%;
+ul{
+    /* list-style-type; */
+    
+    /* UL */
 }
-    .userList{
-
+/* ==================== */
+.App{
+    background-color: #f6f9fc;
+    /* DIV */
+}
+    .userDiv{
+        border: 2px solid blue;
+        display: flex;
+        flex-direction: row-reverse;
+        width: 100%;
+        /* DIV */
     }
-    .userBracket{
+        #userList{
+            display: flex;
+            border: 2px solid green;
+            width: 15%;
+            color: red;
+            /* DIV */
+        }
+            #participantList{
+                width: 100%;
+                /* UL */
+            }
+                .user{
+                    padding: 5px;
+                    border: 1px solid black;
+                    width: 100%;
+                    /* LI */
+                }
+                    .user:hover{
+                        cursor: pointer;
+                        text-decoration: underline;
+                        /* LI */
+                    }
 
-    }
+        #userBracket{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+            border: 2px solid blue;
+            width: 85%;
+            /* DIV */
+        }
+            #roundA{
+                order: 0;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+            #roundB{
+                order: 8;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+            #quarterA{
+                display: flex;
+                align-items: center;
+                order: 1;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+                #quarterA > div > div:nth-child(1){
+                    margin-bottom: 80px;
+                    /* DIV */
+                }
+                #quarterA > div {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    /* DIV */
+                }
+            #quarterB{
+                display: flex;
+                align-items: center;
+                order: 7;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+                #quarterB > div > div:nth-child(1){
+                    margin-bottom: 80px;
+                    /* DIV */
+                }
+                #quarterB > div {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    /* DIV */
+                }
+            #semiA{
+                display: flex;
+                align-items: center;
+                order: 2;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+            #semiB{
+                display: flex;
+                align-items: center;
+                order: 6;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+            #finalA{
+                display: flex;
+                align-items: center;
+                order: 3;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+            #finalB{
+                display: flex;
+                align-items: center;
+                order: 5;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+            #champion{
+                display: flex;
+                align-items: center;
+                padding-top: 80px;
+                order: 4;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+            #third{
+                display: flex;
+                align-items: center;
+                order: 9;
+                width: 10%;
+                /* border: 1px solid red; */
+                /* DIV */
+            }
+                #third > div{
+                    display: flex;
+                    flex-direction: column;
+                    box-shadow: 0 50px 100px rgba(50,50,93,.05), 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.1);
+                    width: 100%;
+                    /* DIV */
+                }
+            /* LIST OF TEAMS */
+            .team{ 
+                width: 100%;
+                box-shadow: 0 50px 100px rgba(50,50,93,.05), 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.1);
+                /* border: 1px solid purple; */
+                /* padding: 5px; */
+                /* DIV */
+            }
+            .team:not(:last-child){
+                margin-bottom: 20px;
+                /* DIV */
+            }
+                /* ONE TEAM */
+                .pick, .correctPick{
+                    padding: 10px;
+                    border: 1px solid black;
+                    background-color: white;
+                    /* DIV */
+                }
+                .correctPick{
+                    background-color: green;
+                    color: white;
+                    /* DIV */
+                }

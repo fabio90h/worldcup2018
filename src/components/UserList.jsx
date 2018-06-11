@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { userListFetch, userClickBracket } from '../actions';
-import User from './User';
+// import User from './User';
 
 
 class UserList extends Component {
@@ -13,39 +13,51 @@ class UserList extends Component {
     onListClick = (participant) => {
         this.props.userClickBracket(participant.arrayVal);
     }
+    objectSort = () => {
+        const { points } = this.props;
+        let keys;
+        let sortable = {};
+        points.forEach((point) => {
+            sortable[point.uid] = point.points;
+        })
+        keys = Object.keys(sortable);
+        keys.sort(function(a, b) { return sortable[b] - sortable[a] });
+        console.log('key', keys)
+        
+    }
 
     participantList = () => {
-        // const { participants, correctround, correctsemifinal, correctquarterfinal, correctfinal, correctchampion} = this.props;        
-        // this.props.calculatePointsFetch(participants, correctround, correctsemifinal, correctquarterfinal, correctfinal, correctchampion ); 
-        const { participants, points } = this.props    
-        if (participants) {
+        const { participants, points, sortedName } = this.props 
+        console.log('sortedName', sortedName);
+        return sortedName.map((name, index) => {
             return participants.map((participant) => {
-                
-                console.log('pp', (points.filter(userPoint => userPoint.uid === participant.uid))[0].points)
-                return <li key={participant.uid}>
-                {participant.uid} points: {(points.filter(userPoint => userPoint.uid === participant.uid))[0].points} {}<button onClick={() => this.onListClick(participant)}>view bracket</button>
-            </li>
+                if (name === participant.uid) {
+                    return <div className='user' key={participant.uid} onClick={() => this.onListClick(participant)}>
+                    <span style={{color: 'green'}}>{index+1}.  </span><span style={{color: 'red'}}>{participant.uid}</span> <span style={{color: 'blue'}}>{`points: ${(points.filter(userPoint => userPoint.uid === participant.uid))[0].points}`}</span>
+                    </div>
+                }
+                return null;
             });
-        }
+        })
     };
 
     render () {
         return (
-            <ul>
+            <div id='participantList'>
                 {this.participantList()}
-                <User/>
-            </ul>
+            </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    const { participants, points, correct } = state.userList
+    const { participants, points, correct, sortedName } = state.userList
     return (
         {
             participants,
             points,
             correct,
+            sortedName,
         }
     );
 };
