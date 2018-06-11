@@ -6,7 +6,7 @@ class UserBracket extends Component {
 
     markAsCorrectTeam = (round, team) => {
         const { correct } = this.props      
-        if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).includes(team)) {
+        if (((correct.filter(correctRound => correctRound.arrayVal.length === round.length))[0].arrayVal).indexOf(team)) {
             return "correctPick"
         }
         return "pick"

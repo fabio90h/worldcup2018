@@ -12,6 +12,7 @@ The goal is to have a website where my friends and I could see each other's worl
 - Hover over team names and get more detail
 - Automatically determines the winner
 - Notifications
+- Mobile View
 
 # Functions
 - Fetches data from Firebase
