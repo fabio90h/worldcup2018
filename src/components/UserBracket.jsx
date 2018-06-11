@@ -175,7 +175,7 @@ class UserBracket extends Component {
                                 <div id='champion'>
                                     <div>
                                         <div id='worldcupLogo'/>
-                                        <div className='team'><div className={this.markAsResultsOut(currentRound)}>{currentRound[0]}</div></div>
+                                        <div className='team'><div className={this.markAsResultsOut(currentRound[0])}>{currentRound[0]}</div></div>
                                     </div>
                                 </div>
                             );
@@ -184,7 +184,7 @@ class UserBracket extends Component {
                                 <div id='third'>
                                     <div>
                                         <div>3rd Place:</div>
-                                        <div className={this.markAsResultsOut(currentRound)}>{currentRound[0]}</div>
+                                        <div className={this.markAsResultsOut(currentRound[0])}>{currentRound[0]}</div>
                                     </div>
                                 </div>
                             );
