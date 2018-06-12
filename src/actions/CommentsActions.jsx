@@ -34,6 +34,6 @@ const grabDate = () => {
     const year = date.getFullYear();
     const hour = date.getHours();
     const min = date.getMinutes();
-    return `Time: ${hour}:${min} Date: ${day}/${month}/${year}`
+    return `Time: ${hour}:${min} Date: ${month}/${day}/${year}`
 };
 
