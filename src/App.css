@@ -280,12 +280,11 @@ html{
             }
                 #commentText{
                     padding: 10px;
-                    display: inline-flex;
-                    flex-wrap: wrap;
+                    float: left;
+                    clear: left;
+                    margin-left: 10px;
                     font-size: '1.5em';
-                    width: fit-content;
                     border: 1px solid black;
-                    /* background-color: rgb(212, 237, 245); */
                     background: linear-gradient(to bottom right, rgb(212, 237, 245), white);
                     border-radius: 10px;
                     box-shadow: 0 50px 100px rgba(50,50,93,.05), 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.1);                    

@@ -21,7 +21,7 @@ class Comments extends Component {
         return commentsArray.map((comment) => {
             console.log('displayComments', comment)
             return <div className='comment'>
-                        <div id='commentText'>{comment.comment}</div>
+                        <div><div id='commentText'>{comment.comment}</div></div>
                         <span style={{fontSize: '.8em', marginTop: '5px'}}> <strong>Author:</strong>  {comment.name}</span>
                         <span style={{fontSize: '.8em'}}>{comment.date}</span>
                     </div>
