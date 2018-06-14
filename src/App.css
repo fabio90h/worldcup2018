@@ -3,6 +3,7 @@ html{
 }
 /* ==================== */
 .App{
+    width: 100%;
     /* DIV */
 }
     #header{
@@ -40,27 +41,35 @@ html{
                 background-position: center;
                 background-repeat: no-repeat;
             }
-    #pointSystem{
-        /* background-color: white; */
-        list-style-type: none;
-        /* border: 1px solid black; */
-        width: 50%;
-        margin-left: 10px;
-        padding: 10px;
-        /* box-shadow: 0 50px 100px rgba(50,50,93,.05), 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.1); */
-        
+    #rulesStats{
+        display: flex;
+        flex-direction: row;
+        /* border: 1px solid red; */
     }
-        #pointSystem > li{
-            margin-bottom: 5px;
+        #pointSystem, #stats{
+            /* background-color: white; */
+            list-style-type: none;
+            /* border: 1px solid black; */
+            width: 50%;
+            margin-left: 10px;
+            padding: 10px;
+            /* box-shadow: 0 50px 100px rgba(50,50,93,.05), 0 15px 35px rgba(50,50,93,.1), 0 5px 15px rgba(0,0,0,.1); */
+            
         }
-        #pointSystem > li > strong{
-            text-decoration: underline;
-            color:  rgb(175, 41, 41);
-        }
+            #stats > li{
+                margin-bottom: 5px;
+            }
+            #pointSystem > li{
+                margin-bottom: 5px;
+            }
+            #pointSystem > li > strong, #stats > li > strong{
+                text-decoration: underline;
+                color:  rgb(175, 41, 41);
+            }
     .userDiv{
         /* border: 2px solid blue; */
         display: flex;
-        margin-top: 50px;
+        margin-top: 10px;
         flex-direction: row-reverse;
         width: 100%;
         /* DIV */
@@ -100,12 +109,15 @@ html{
         }
             #roundA{
                 order: 0;
+                align-self: center;
+                /* margin-top: 30px; */
                 width: 10%;
                 /* border: 1px solid red; */
                 /* DIV */
             }
             #roundB{
                 order: 8;
+                align-self: center;
                 width: 10%;
                 /* border: 1px solid red; */
                 /* DIV */
@@ -230,7 +242,7 @@ html{
                 /* DIV */
             }
             .team:not(:last-child){
-                margin-bottom: 20px;
+                margin-bottom: 30px;
                 /* DIV */
             }
                 /* ONE TEAM */
@@ -246,7 +258,7 @@ html{
                     /* DIV */
                 }
         #commentDiv{
-            margin-top: 50px;
+            margin-top: 20px;
             margin-left: 40px;
             /* border: 1px solid */
         }
